@@ -72,9 +72,10 @@ int main()
   /* Execute OpenCL Kernel */
   ret = clEnqueueTask(command_queue, kernel, 0, NULL,NULL);
 
+  graph_t graph = init();
   /* Copy results from the memory buffer */
   ret = clEnqueueReadBuffer(command_queue, memobj, CL_TRUE, 0,
-			    MEM_SIZE * sizeof(char),string, 0, NULL, NULL);
+			    100 * sizeof(edge_t),graph, 0, NULL, NULL);
  
   /* Display Result */
   //puts(string);
