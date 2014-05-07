@@ -1,6 +1,12 @@
 CC = clang
 CFLAGS = -g
-LDFLAGS = -framework OpenCL
+uname := $(shell uname)
+ifeq ($(uname),Darwin)
+	LDFLAGS = -framework OpenCL
+endif
+ifeq ($(uname),Linux)
+	LDFLAGS = -lOpenCL
+endif
 
 all: ants
 
